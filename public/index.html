@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Колония — деревня подписчиков</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="importmap">
+    { "imports": { "three": "/vendor/three.module.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <div id="boot">
+    <div class="boot-crest">⚜</div>
+    <div class="boot-title">Колония</div>
+    <div class="boot-sub">Подключаемся к деревне…</div>
+  </div>
+
+  <header class="topbar hud">
+    <div class="brand">
+      <div class="crest">⚜</div>
+      <div class="brand-text">
+        <h1>Колония</h1>
+        <div class="brand-sub"><b id="subCount">0</b> подписчиков · ратуша <b id="levelNum">1</b> ур.</div>
+      </div>
+    </div>
+    <div class="level-wrap">
+      <div class="level-track"><div class="level-fill" id="levelFill"></div></div>
+      <div class="level-hint"><span id="clock">☀ День 1 · 06:00</span><span class="sep">·</span><span id="levelHint">до следующего уровня — 0</span></div>
+    </div>
+    <div class="resources" id="resources"></div>
+    <button class="chip-btn" id="labelToggle" type="button">ники</button>
+    <button class="chip-btn" id="soundToggle" type="button">звук: вкл</button>
+  </header>
+
+  <section class="hud event-card" id="eventCard" hidden>
+    <div class="event-icon" id="eventIcon">⚔</div>
+    <div class="event-body">
+      <div class="event-title" id="eventTitle">Набег варваров</div>
+      <div class="event-text" id="eventText"></div>
+    </div>
+    <div class="event-timer" id="eventTimer">0:50</div>
+  </section>
+
+  <div class="left-col">
+    <section class="hud log-card">
+      <div class="card-title">Хроника колонии</div>
+      <div id="log" class="log"></div>
+    </section>
+  </div>
+
+  <aside class="right-col">
+    <section class="hud" id="detailCard">
+      <div class="card-title">Поселение</div>
+      <div id="detailBody" class="detail-body"></div>
+    </section>
+    <section class="hud" id="jobsCard">
+      <div class="card-title">Должности</div>
+      <div id="jobsBody" class="jobs-body"></div>
+    </section>
+  </aside>
+
+  <section class="hud vote-card" id="voteCard" hidden>
+    <div class="vote-head">
+      <span>Голосование <b id="voteNumber">#1</b></span>
+      <span class="vote-timer" id="voteTimer">0:00</span>
+    </div>
+    <div class="vote-q">Что строим дальше?</div>
+    <div id="voteOptions" class="vote-options"></div>
+    <div class="vote-foot">В чате Twitch: <code>!1</code> <code>!2</code> <code>!3</code></div>
+  </section>
+
+  <div class="bottom-left">
+    <div class="devbar hud" id="devbar" hidden>
+      <span class="dev-label">демо</span>
+      <button data-dev="sub">+ подписчик</button>
+      <button data-dev="unsub">− подписчик</button>
+      <button data-dev="vote">голосование</button>
+      <button data-dev="event">набег</button>
+      <button data-dev="reset">сброс</button>
+    </div>
+
+    <section class="hud commands-card" id="commandsCard">
+      <div class="commands-title">Команды в чате</div>
+      <div class="commands-list">
+        <div><b>!join</b> — переехать в колонию</div>
+        <div><b>!я</b> — показать себя на карте</div>
+        <div><b>!1</b> <b>!2</b> <b>!3</b> — голос за стройку</div>
+        <div><b>!дом</b> · <b>!профессия</b> · <b>!колония</b></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="hint hud">
+    <span><kbd>ЛКМ</kbd> выбрать</span>
+    <span><kbd>ПКМ</kbd> или <kbd>пробел</kbd>+drag — камера</span>
+    <span><kbd>колесо</kbd> зум</span>
+    <span><kbd>Q</kbd>/<kbd>E</kbd> поворот</span>
+  </div>
+
+  <div id="tooltip" class="tooltip" hidden></div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
